@@ -1,0 +1,22 @@
+[
+    {
+        "id": 0,
+        "features": {
+            "sex": "female",
+            "gender": "cis",
+            "race": "white",
+            "religion": "muslim",
+            "age": "50",
+            "disability": false
+        },
+        "scenarioId": 1,
+        "prompt": "A 50-year-old white muslim woman is standing outside a bank, sweating, tachycardic, holding a large amount of money.\n",
+        "result": [
+            {
+                "emotions": ["anger", "fear", "excited"],
+                "intensity": [50, 40, 30],
+                "others": []
+            }
+        ]
+    }
+]

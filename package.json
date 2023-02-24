@@ -1,0 +1,25 @@
+{
+  "name": "chatgpt-proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv-safe": "^8.1.2",
+    "@types/node": "^18.14.1",
+    "@types/ora": "^3.2.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "chatgpt": "^4.7.2",
+    "dotenv-safe": "^8.2.0",
+    "ora": "^6.1.2",
+    "ora-promise": "^1.0.0"
+  }
+}
