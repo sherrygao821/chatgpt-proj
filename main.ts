@@ -4,7 +4,7 @@ import dotenv from 'dotenv-safe'
 import fs from 'fs'
 import { oraPromise } from 'ora'
 
-import data from './data/test_prompts.json';
+import data from './data/prompts.json';
 import { GUIDANCE } from './constants'
 
 dotenv.config()
@@ -22,25 +22,18 @@ async function main () {
   if (process.env.OPENAI_API_KEY == undefined)
     return -1
   const api = new ChatGPTAPI({ 
-    apiKey: process.env.OPENAI_API_KEY 
+    apiKey: process.env.OPENAI_API_KEY,
   })
-
-  // // PROXYAPI - NOT RECOMMENDED, CANNOT MAKE MUCH REQUEST
-  // if (process.env.OPENAI_ACCESS_TOKEN == undefined)
-  //   return -1;
-  // const api = new ChatGPTUnofficialProxyAPI({
-  //   accessToken: process.env.OPENAI_ACCESS_TOKEN,
-  //   debug: false
-  // })
   
   // loop through prompts
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < 2; i++) {
 
-    const prompt = data[i].prompt + GUIDANCE;
+    const prompt = data[i].prompt + GUIDANCE
+    data[i].result = []
 
     // create 100 queries
-    for (var j = 0; j < 100; j++) {
-      var res;
+    for (var j = 0; j < 2; j++) {
+      var res
       try {
         res = await oraPromise(api.sendMessage(prompt), {
           text: prompt
@@ -55,7 +48,7 @@ async function main () {
 
       console.log(res)
 
-      let res_json;
+      let res_json
       try {
         res_json = JSON.parse(res.text)
       }
@@ -64,12 +57,11 @@ async function main () {
         j--
         continue
       }
-
-      fs.appendFileSync('./data/data_' + i + '.json', JSON.stringify(res_json) + ',\n')
-
-      // delay for 1.5s before making the next request
-      await delay(1500)
+      data[i].result.push(res_json)
+      await delay(100)
     }
+
+    fs.appendFileSync('./data/result1.json', JSON.stringify(data[i]) + ',\n')
   }
 }
 
