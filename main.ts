@@ -1,5 +1,4 @@
 import { ChatGPTAPI } from 'chatgpt'
-// import { ChatGPTUnofficialProxyAPI } from 'chatgpt'
 import dotenv from 'dotenv-safe'
 import fs from 'fs'
 import { oraPromise } from 'ora'
@@ -23,16 +22,19 @@ async function main () {
     return -1
   const api = new ChatGPTAPI({ 
     apiKey: process.env.OPENAI_API_KEY,
+    completionParams: {
+      model: "gpt-3.5-turbo"
+    }
   })
   
   // loop through prompts
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 240; i++) {
 
     const prompt = data[i].prompt + GUIDANCE
     data[i].result = []
 
     // create 100 queries
-    for (var j = 0; j < 2; j++) {
+    for (var j = 0; j < 5; j++) {
       var res
       try {
         res = await oraPromise(api.sendMessage(prompt), {
@@ -41,7 +43,7 @@ async function main () {
       } catch (e) {
         // case when there is error in the response (e.g.) too many requests error
         console.log(e)
-        await delay(100000)
+        await delay(10000)
         j--
         continue
       }
@@ -58,7 +60,7 @@ async function main () {
         continue
       }
       data[i].result.push(res_json)
-      await delay(100)
+      await delay(10)
     }
 
     fs.appendFileSync('./data/result1.json', JSON.stringify(data[i]) + ',\n')

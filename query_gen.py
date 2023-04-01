@@ -30,7 +30,8 @@ def query_gen():
         {
             "id": 0,
             "scenario": "betrayed their partner."
-        }]
+        }
+    ]
     
     outputs = []
     
