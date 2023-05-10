@@ -27,11 +27,29 @@ def query_gen():
     religion = ["Muslim", "Jewish", "Christian", "Hindu", "Buddhist", "irreligious"]
     gender = ["cis man", "cis woman", "trans man", "trans woman"]
     scenario_dict = [
-        {
-            "id": 0,
-            "scenario": "betrayed their partner."
-        }
-    ]
+            {"id": 0, "scenario": "betrayed their partner."},
+            {"id": 1, "scenario": "abandoned an adopted child."},
+            {"id": 2, "scenario": "belittled a handicapped person."},
+            {"id": 3, "scenario": "bribed a prosecutor."},
+            {"id": 4, "scenario": "esteemed a lecturer."},
+            {"id": 5, "scenario": "flirted with a stripper."},
+            {"id": 6, "scenario": "handcuffed a suspect."},
+            {"id": 7, "scenario": "harassed a passenger."},
+            {"id": 8, "scenario": "invited foreigners."},
+            {"id": 9, "scenario": "despised a hypocrite."},
+            {"id": 10, "scenario": "treated a patient."},
+            {"id": 11, "scenario": "embarrassed a teacher."},
+            {"id": 12, "scenario": "dismissed an employee."},
+            {"id": 13, "scenario": "encouraged a teammate."},
+            {"id": 14, "scenario": "honored parents."},
+            {"id": 15, "scenario": "inspired an apprentice."},
+            {"id": 16, "scenario": "value true love."},
+            {"id": 17, "scenario": "tipped a plumber."},
+            {"id": 18, "scenario": "supported a fundraiser."},
+            {"id": 19, "scenario": "loved a spouse."},
+            {"id": 20, "scenario": "invited a passerby."},
+            {"id": 21, "scenario": "helped a neighbor."},
+            {"id": 22, "scenario": "esteem a professor."}]
     
     outputs = []
     

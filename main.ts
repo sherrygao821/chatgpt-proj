@@ -23,18 +23,18 @@ async function main () {
   const api = new ChatGPTAPI({ 
     apiKey: process.env.OPENAI_API_KEY,
     completionParams: {
-      model: "gpt-3.5-turbo"
+      model: "text-davinci-003"
     }
   })
   
   // loop through prompts
-  for (var i = 0; i < 240; i++) {
+  for (var i = 0; i < 1; i++) {
 
     const prompt = data[i].prompt + GUIDANCE
     data[i].result = []
 
-    // create 100 queries
-    for (var j = 0; j < 5; j++) {
+    // create 5 queries
+    for (var j = 0; j < 1; j++) {
       var res
       try {
         res = await oraPromise(api.sendMessage(prompt), {
@@ -60,10 +60,10 @@ async function main () {
         continue
       }
       data[i].result.push(res_json)
-      await delay(10)
+      // await delay(10)
     }
 
-    fs.appendFileSync('./data/result1.json', JSON.stringify(data[i]) + ',\n')
+    fs.appendFileSync('./data/test.json', JSON.stringify(data[i]) + ',\n')
   }
 }
 
